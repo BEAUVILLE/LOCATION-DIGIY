@@ -308,7 +308,9 @@
     .filters-card,
     .contact-card,
     .proof-card-wrap,
-    .message-card{
+    .message-card,
+    .examples-wrap,
+    .whatsapp-help{
       background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.08);
       border-radius:24px;
@@ -388,6 +390,109 @@
       color:var(--text);
       border:1px solid rgba(255,255,255,.10);
       box-shadow:none;
+    }
+
+    .examples-wrap{
+      padding:16px;
+    }
+
+    .examples-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+      margin-top:12px;
+    }
+
+    .example-card{
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
+        radial-gradient(circle at top left, rgba(238,200,126,.10), transparent 45%);
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-height:170px;
+    }
+
+    .example-kicker{
+      font-size:12px;
+      font-weight:900;
+      color:var(--brand-2);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .example-title{
+      font-size:20px;
+      line-height:1.08;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+
+    .example-text{
+      color:var(--muted);
+      line-height:1.55;
+      font-size:14px;
+      font-weight:500;
+      flex:1;
+    }
+
+    .example-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .mini-btn{
+      min-height:40px;
+      padding:0 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:800;
+      font-size:13px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+
+    .mini-btn.gold{
+      background:rgba(238,200,126,.12);
+      border-color:rgba(238,200,126,.28);
+      color:var(--brand-2);
+    }
+
+    .whatsapp-help{
+      padding:16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .whatsapp-help-title{
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+
+    .whatsapp-help-text{
+      color:var(--muted);
+      line-height:1.6;
+      font-weight:500;
+      margin-top:6px;
+      max-width:52ch;
+    }
+
+    .whatsapp-help-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
     .contact-card{
@@ -986,6 +1091,7 @@
     @media (max-width:980px){
       .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .lead-form{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .examples-grid{grid-template-columns:1fr 1fr}
     }
 
     @media (max-width:820px){
@@ -1006,11 +1112,12 @@
       .top-actions .pill-btn:last-child{display:none}
       .actions.three{grid-template-columns:1fr 1fr}
       .actions.three .btn-fiche{grid-column:1/-1}
+      .examples-grid{grid-template-columns:1fr}
     }
 
     @media (prefers-reduced-motion:reduce){
       *{scroll-behavior:auto}
-      .btn,.btn-card,.chip{transition:none}
+      .btn,.btn-card,.chip,.mini-btn{transition:none}
     }
   </style>
 </head>
@@ -1060,7 +1167,72 @@
             <span class="note">💸 Paiement direct</span>
             <span class="note">✅ 0% commission</span>
             <span class="note">🌙 NDIMBAL disponible</span>
+            <span class="note">📲 WhatsApp : +221 77 134 28 89</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="examples-wrap">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Exemples rapides</h2>
+            <p class="section-text">Même si tout n’est pas encore rempli, voici des entrées concrètes pour ne pas laisser la page vide.</p>
+          </div>
+        </div>
+
+        <div class="examples-grid">
+          <article class="example-card">
+            <div class="example-kicker">Exemple 1</div>
+            <div class="example-title">Ce soir à Saly</div>
+            <div class="example-text">
+              Tu cherches vite un lieu à Saly pour dormir ce soir, avec réponse directe par WhatsApp.
+            </div>
+            <div class="example-actions">
+              <button class="mini-btn gold" type="button" data-example-zone="saly" data-example-q="saly">Voir Saly</button>
+              <a class="mini-btn" href="https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20cherche%20un%20logement%20%C3%A0%20Saly%20pour%20ce%20soir." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            </div>
+          </article>
+
+          <article class="example-card">
+            <div class="example-kicker">Exemple 2</div>
+            <div class="example-title">Week-end à Ngaparou</div>
+            <div class="example-text">
+              Besoin d’un studio, d’un appartement ou d’une villa pour un petit week-end près de la mer.
+            </div>
+            <div class="example-actions">
+              <button class="mini-btn gold" type="button" data-example-zone="ngaparou" data-example-q="ngaparou">Voir Ngaparou</button>
+              <a class="mini-btn" href="https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20cherche%20un%20logement%20%C3%A0%20Ngaparou%20pour%20un%20week-end." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            </div>
+          </article>
+
+          <article class="example-card">
+            <div class="example-kicker">Exemple 3</div>
+            <div class="example-title">Petit budget à Mbour</div>
+            <div class="example-text">
+              Tu veux un coin simple, propre, direct, sans perdre du temps à tourner.
+            </div>
+            <div class="example-actions">
+              <button class="mini-btn gold" type="button" data-example-zone="mbour" data-example-q="mbour">Voir Mbour</button>
+              <a class="mini-btn" href="https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20cherche%20un%20petit%20budget%20%C3%A0%20Mbour." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="whatsapp-help">
+        <div>
+          <div class="whatsapp-help-title">Tu ne trouves pas encore ton lieu ?</div>
+          <div class="whatsapp-help-text">
+            Écris directement à DIGIY sur WhatsApp. Donne ta zone, tes dates et ton budget, et on te répond simplement.
+          </div>
+        </div>
+        <div class="whatsapp-help-actions">
+          <a class="btn btn-primary" href="https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20cherche%20un%20logement.%20Zone%20:%20%20Dates%20:%20%20Budget%20:%20" target="_blank" rel="noopener noreferrer">📲 Écrire à DIGIY</a>
+          <a class="btn btn-secondary" href="tel:+221771342889">📞 Appeler</a>
         </div>
       </div>
     </section>
@@ -1673,7 +1845,6 @@
       const roomSlug = canonicalRoomSlug(p);
       const legacySlug = canonicalLegacySlug(p);
       const city = p.address_label || "—";
-      const kind = p.kind || computeKind(p);
       const wa = pickWhatsApp(p);
       const cover = pickCover(p);
       const ficheUrl = ficheLinkFor(p);
@@ -1841,11 +2012,26 @@
 
       if (!filteredLive.length){
         if (livePins.length > 0){
-          grid.innerHTML = `<div class="message-card">Aucun résultat sur les logements publiés. Clique <b>Effacer</b> ou change de zone.</div>`;
+          grid.innerHTML = `
+            <div class="message-card">
+              Aucun résultat sur les logements publiés. Clique <b>Effacer</b> ou change de zone.<br><br>
+              Besoin d’aide ? <a href="https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20cherche%20un%20logement%20mais%20je%20ne%20trouve%20pas%20encore." target="_blank" rel="noopener noreferrer" style="color:#ffdc9a;text-decoration:underline;">Écris-nous sur WhatsApp</a>.
+            </div>
+          `;
         } else if (pinsRes.error === "supabase_unavailable"){
-          grid.innerHTML = `<div class="message-card">Chargement du service logement… <b>réessai automatique</b> en cours.</div>`;
+          grid.innerHTML = `
+            <div class="message-card">
+              Chargement du service logement… <b>réessai automatique</b> en cours.<br><br>
+              En attendant : <a href="https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20cherche%20un%20logement%20sur%20la%20Petite%20C%C3%B4te." target="_blank" rel="noopener noreferrer" style="color:#ffdc9a;text-decoration:underline;">WhatsApp +221 77 134 28 89</a>
+            </div>
+          `;
         } else {
-          grid.innerHTML = `<div class="message-card">Aucun logement réel publié pour l’instant. Les zones en ouverture restent visibles plus bas.</div>`;
+          grid.innerHTML = `
+            <div class="message-card">
+              Aucun logement réel publié pour l’instant. Les zones en ouverture restent visibles plus bas.<br><br>
+              Tu peux déjà écrire à <b>DIGIY</b> sur WhatsApp au <b>+221 77 134 28 89</b>.
+            </div>
+          `;
         }
       } else {
         grid.innerHTML = filteredLive.map(p => cardTemplate(p, occMap)).join("");
@@ -1884,6 +2070,18 @@
       }
     }
 
+    function applyExample(zone, query){
+      ACTIVE_ZONE = zone || "";
+      document.getElementById("q").value = query || "";
+
+      document.querySelectorAll("#zoneChips .chip").forEach(ch => {
+        ch.classList.toggle("active", (ch.getAttribute("data-zone") || "") === ACTIVE_ZONE);
+      });
+
+      render();
+      document.getElementById("results").scrollIntoView({ behavior:"smooth", block:"start" });
+    }
+
     grid.addEventListener("click", handleCardActionClick);
     openingGrid.addEventListener("click", handleCardActionClick);
 
@@ -1910,6 +2108,15 @@
       document.querySelectorAll("#zoneChips .chip").forEach(ch => ch.classList.remove("active"));
       btn.classList.add("active");
       render();
+    });
+
+    document.querySelectorAll("[data-example-zone]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        applyExample(
+          btn.getAttribute("data-example-zone") || "",
+          btn.getAttribute("data-example-q") || ""
+        );
+      });
     });
 
     render();
