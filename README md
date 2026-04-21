@@ -1,0 +1,318 @@
+# DIGIY LOC — Façade publique
+## Dormir à Saly ce soir
+
+DIGIY LOC n'est pas présenté ici comme un logiciel.
+Cette façade publique sert d'abord à répondre à un besoin simple :
+
+**trouver où dormir vite, localement, avec un contact direct.**
+
+Le public ne doit pas comprendre une architecture.
+Il doit comprendre en quelques secondes :
+
+- où il peut dormir
+- dans quelle zone
+- à quel prix
+- et comment agir tout de suite
+
+---
+
+## Vision de cette page
+
+Cette landing page retourne la lecture habituelle du module LOC.
+
+Avant :
+- logique outil
+- logique propriétaire
+- logique gestion
+
+Maintenant :
+- logique besoin public
+- logique lieu réel
+- logique action immédiate
+
+Autrement dit :
+
+**LOC vu par le public = “Dormir à Saly ce soir”**
+
+---
+
+## Objectif principal
+
+Créer une entrée publique ultra claire, mobile-first, locale et directe pour :
+
+- voir des lieux réels
+- filtrer simplement
+- choisir rapidement
+- contacter en direct
+- réserver sans friction inutile
+
+---
+
+## Promesse de façade
+
+**Chambres, villas, appartements. Disponibles. Locaux réels.**
+
+---
+
+## Geste maître
+
+Le geste maître de cette façade est volontairement simple :
+
+- **WhatsApp**
+- **Réserver**
+
+Le public doit pouvoir passer de la découverte à l'action sans détour.
+
+---
+
+## Structure de la page
+
+### 1. Hero
+Le hero pose immédiatement le besoin :
+
+- titre humain
+- sous-promesse claire
+- appel à l'action immédiat
+- ancrage local Petite Côte
+
+Exemple :
+- **Dormir à Saly ce soir**
+- **Chambres, villas, appartements. Disponibles maintenant.**
+
+---
+
+### 2. Filtres simples
+La page permet de filtrer sans lourdeur :
+
+- **Zone**
+- **Budget**
+- **Quand**
+
+Le filtre n'est pas un outil complexe.
+C'est un raccourci de décision.
+
+---
+
+### 3. Cartes de lieux
+Chaque carte doit permettre une lecture rapide :
+
+- photo
+- nom du lieu
+- zone
+- capacité
+- prix
+- statut
+- texte court
+- bouton maître
+
+Chaque carte doit répondre à une question simple :
+
+**“Est-ce que ce lieu peut me convenir maintenant ?”**
+
+---
+
+### 4. Pont direct
+Le pont entre public et pro ne doit jamais être compliqué.
+
+La sortie principale est :
+
+- WhatsApp direct
+- réservation directe
+- éventuellement appel selon contexte
+
+---
+
+### 5. Preuve vivante
+La page doit inspirer confiance avec du réel :
+
+- visuels terrain
+- zones connues
+- noms lisibles
+- ambiance Petite Côte
+- impression de proximité
+
+---
+
+## Doctrine produit
+
+Cette page suit la doctrine DIGIY suivante :
+
+### 1. Zéro jargon visible
+On ne montre pas au public :
+
+- module
+- pro
+- dashboard
+- cockpit
+- slug
+- backend
+- configuration
+- système
+
+Le public doit entrer par son besoin, pas par la structure.
+
+---
+
+### 2. Mobile d'abord
+Cette page est pensée avant tout pour téléphone réel :
+
+- lecture rapide
+- gros boutons
+- cartes simples
+- peu de texte
+- action sous le pouce
+
+---
+
+### 3. Sobre devant, redoutable derrière
+On ne casse pas les rails internes.
+On retourne uniquement la façade visible.
+
+Cela veut dire :
+
+- backend conservé
+- logique de fiches conservée
+- slugs conservés
+- réservation conservée
+
+On retravaille seulement :
+
+- titres
+- promesses
+- hiérarchie visuelle
+- boutons
+- lecture publique
+
+---
+
+### 4. Le public d'abord
+Cette façade fait partie de la bascule stratégique DIGIY :
+
+**ne plus penser d'abord “outil pro”**
+mais
+**porte publique locale**
+
+Le raisonnement devient :
+
+- le public cherche
+- DIGIY montre
+- le public contacte
+- le pro répond derrière
+
+---
+
+## Positionnement
+
+Cette page n'est pas une vitrine abstraite.
+C'est une **porte d'entrée locale**.
+
+Elle doit faire sentir immédiatement :
+
+- la Petite Côte
+- le réel
+- la proximité
+- la possibilité d'agir maintenant
+
+---
+
+## Parcours attendu
+
+### Parcours simple
+1. la personne arrive sur la page
+2. elle comprend qu'elle peut trouver un lieu
+3. elle filtre si besoin
+4. elle regarde une carte
+5. elle clique sur WhatsApp ou Réserver
+6. elle passe en contact direct
+
+---
+
+## Boutons maîtres
+
+Les boutons visibles doivent rester simples.
+
+Boutons recommandés :
+
+- **Voir les lieux maintenant**
+- **WhatsApp direct**
+- **WhatsApp**
+- **Réserver**
+
+Boutons à éviter :
+
+- ouvrir le module
+- voir le cockpit
+- gérer le logement
+- accès système
+- paramètres
+
+---
+
+## Ce fichier sert à quoi
+
+Ce README sert de repère pour toute future recouture de la façade publique LOC.
+
+Il fixe :
+
+- le sens de lecture
+- la promesse publique
+- la structure de façade
+- la doctrine de simplicité
+- le rôle des boutons
+- la séparation entre façade publique et moteur interne
+
+---
+
+## Ce qu'il ne faut pas faire
+
+Ne pas :
+
+- retransformer la page en outil propriétaire visible
+- ajouter du jargon technique
+- surcharger les filtres
+- multiplier les boutons secondaires
+- casser les rails réels derrière
+- mélanger la logique publique et la logique app propriétaire
+
+---
+
+## Ce qu'il faut préserver
+
+Toujours préserver :
+
+- la compréhension immédiate
+- la lecture mobile
+- la clarté des cartes
+- l'action directe
+- la proximité terrain
+- l'ancrage local
+
+---
+
+## Phrase mère de cette façade
+
+**DIGIY LOC n'est pas montré ici comme un logiciel.  
+Il est montré comme une réponse simple à un besoin immédiat : trouver où dormir sur la Petite Côte.**
+
+---
+
+## Continuité chantier
+
+Cette page ouvre le chantier de bascule façade publique DIGIY.
+
+Ordre de priorité retenu :
+
+1. **LOC** — Trouver où dormir
+2. **DRIVER** — Trouver un chauffeur
+3. **EXPLORE** — Découvrir un lieu
+4. **RESA** — Réserver maintenant
+5. **BUILD** — Trouver un artisan
+6. **MARKET** — Voir les boutiques locales
+
+---
+
+## Règle d'or
+
+**Ne rien casser derrière.  
+Retourner uniquement ce qui est visible devant.  
+Un wagon à la fois.**
