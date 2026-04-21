@@ -1,0 +1,1272 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Dormir à Saly ce soir</title>
+  <meta name="description" content="Chambres, villas, appartements. Disponibles maintenant sur la Petite Côte. Contact direct, réponse rapide." />
+  <meta name="theme-color" content="#0b1724" />
+
+  <meta property="og:title" content="Dormir à Saly ce soir" />
+  <meta property="og:description" content="Chambres, villas, appartements. Disponibles maintenant. Contact direct." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop" />
+
+  <style>
+    :root{
+      --bg:#07111b;
+      --bg-2:#0d1b2a;
+      --card:#0f2235;
+      --card-2:#132b43;
+      --line:rgba(255,255,255,.10);
+      --text:#f3f7fb;
+      --muted:#b8c8d7;
+      --soft:#8aa6be;
+      --brand:#eec87e;
+      --brand-2:#ffdc9a;
+      --sea:#67d2e6;
+      --ok:#21c17a;
+      --danger:#ff7f7f;
+      --shadow:0 18px 45px rgba(0,0,0,.28);
+      --radius:22px;
+      --radius-sm:14px;
+      --max:1100px;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --font: Outfit, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(103,210,230,.18), transparent 40%),
+        radial-gradient(900px 500px at 100% 0%, rgba(238,200,126,.15), transparent 35%),
+        linear-gradient(180deg, #07111b 0%, #091522 20%, #0b1724 100%);
+      min-height:100vh;
+    }
+
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button, input, select{font:inherit}
+
+    .wrap{
+      width:min(100%, var(--max));
+      margin:0 auto;
+      padding:0 16px;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(12px);
+      background:linear-gradient(180deg, rgba(7,17,27,.92), rgba(7,17,27,.68));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      min-height:72px;
+      padding-top:calc(8px + var(--safe-top));
+      padding-bottom:8px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .brand-logo{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      object-fit:cover;
+      box-shadow:0 10px 25px rgba(0,0,0,.22);
+      background:#fff;
+      flex:0 0 auto;
+    }
+
+    .brand-text{
+      min-width:0;
+    }
+
+    .brand-kicker{
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--brand);
+      margin-bottom:2px;
+      font-weight:700;
+    }
+
+    .brand-title{
+      font-size:15px;
+      font-weight:700;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .topbar-action{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      height:42px;
+      padding:0 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:700;
+      flex:0 0 auto;
+    }
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:22px 0 10px;
+    }
+
+    .hero-card{
+      position:relative;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:30px;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(8,18,28,.18), rgba(8,18,28,.72)),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1800&auto=format&fit=crop") center/cover no-repeat;
+      box-shadow:var(--shadow);
+      min-height:430px;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-overlay{
+      position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(4,10,17,.15) 0%, rgba(4,10,17,.48) 46%, rgba(4,10,17,.82) 100%);
+      pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:26px 18px 20px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(8,18,28,.34);
+      color:var(--brand-2);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:12px;
+      font-weight:700;
+      backdrop-filter:blur(8px);
+      margin-bottom:14px;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(34px, 8vw, 58px);
+      line-height:.98;
+      letter-spacing:-.03em;
+      max-width:12ch;
+    }
+
+    .hero-sub{
+      margin:14px 0 18px;
+      max-width:42ch;
+      color:#e7f1f8;
+      font-size:16px;
+      line-height:1.55;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:16px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:52px;
+      padding:0 18px;
+      border-radius:16px;
+      font-weight:800;
+      border:none;
+      cursor:pointer;
+      transition:transform .18s ease, opacity .18s ease, background .18s ease;
+    }
+
+    .btn:active{transform:translateY(1px) scale(.99)}
+    .btn-primary{
+      background:linear-gradient(180deg, var(--brand-2), var(--brand));
+      color:#102132;
+      box-shadow:0 12px 30px rgba(238,200,126,.25);
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--text);
+      backdrop-filter:blur(8px);
+    }
+
+    .hero-notes{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .note{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:#eef7ff;
+      font-size:12px;
+      font-weight:700;
+      backdrop-filter:blur(8px);
+    }
+
+    .section{
+      padding:16px 0 4px;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .section-title{
+      margin:0;
+      font-size:26px;
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+
+    .section-text{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.5;
+      max-width:48ch;
+    }
+
+    .filters{
+      display:grid;
+      gap:12px;
+      grid-template-columns:1fr;
+      margin:10px 0 12px;
+    }
+
+    .filter-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      padding:14px;
+      box-shadow:var(--shadow);
+    }
+
+    .filter-grid{
+      display:grid;
+      gap:12px;
+      grid-template-columns:1fr;
+    }
+
+    .field{
+      display:grid;
+      gap:8px;
+    }
+
+    .label{
+      font-size:13px;
+      font-weight:700;
+      color:var(--muted);
+    }
+
+    .control{
+      width:100%;
+      min-height:50px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(7,17,27,.45);
+      color:var(--text);
+      padding:0 14px;
+      outline:none;
+    }
+
+    .control:focus{
+      border-color:rgba(238,200,126,.72);
+      box-shadow:0 0 0 4px rgba(238,200,126,.10);
+    }
+
+    .chips{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:42px;
+      padding:0 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:700;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .chip.active,
+    .chip:hover{
+      background:rgba(238,200,126,.16);
+      color:var(--brand-2);
+      border-color:rgba(238,200,126,.34);
+    }
+
+    .results-bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin:14px 0 10px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      padding-bottom:18px;
+    }
+
+    .card{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .card-media{
+      position:relative;
+      aspect-ratio:16 / 10;
+      overflow:hidden;
+      background:#102132;
+    }
+
+    .card-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .4s ease;
+    }
+
+    .card:hover .card-media img{
+      transform:scale(1.03);
+    }
+
+    .status{
+      position:absolute;
+      left:12px;
+      top:12px;
+      z-index:2;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:34px;
+      padding:0 12px;
+      border-radius:999px;
+      backdrop-filter:blur(10px);
+      font-size:12px;
+      font-weight:800;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(8,18,28,.42);
+    }
+
+    .status.ok{color:#dfffea}
+    .status.ok .dot{background:var(--ok)}
+    .status.warn{color:#fff6de}
+    .status.warn .dot{background:var(--brand)}
+    .status.off{color:#ffe5e5}
+    .status.off .dot{background:var(--danger)}
+
+    .dot{
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      flex:0 0 auto;
+      box-shadow:0 0 0 5px rgba(255,255,255,.06);
+    }
+
+    .card-body{
+      padding:14px;
+    }
+
+    .card-top{
+      display:flex;
+      align-items:start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+    }
+
+    .card-title{
+      margin:0;
+      font-size:22px;
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+
+    .card-zone{
+      margin-top:5px;
+      color:var(--soft);
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .price{
+      text-align:right;
+      flex:0 0 auto;
+    }
+
+    .price-main{
+      font-size:18px;
+      font-weight:800;
+      color:var(--brand-2);
+      white-space:nowrap;
+    }
+
+    .price-sub{
+      color:var(--soft);
+      font-size:12px;
+      margin-top:3px;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:12px;
+    }
+
+    .meta-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:34px;
+      padding:0 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      color:#eff6fb;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .card-text{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.55;
+      margin:0 0 14px;
+    }
+
+    .card-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .action{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      border-radius:16px;
+      font-weight:800;
+      text-align:center;
+      padding:0 14px;
+    }
+
+    .action-primary{
+      background:linear-gradient(180deg, var(--brand-2), var(--brand));
+      color:#102132;
+    }
+
+    .action-secondary{
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .proof{
+      padding:10px 0 16px;
+    }
+
+    .proof-grid{
+      display:grid;
+      gap:12px;
+      grid-template-columns:1fr;
+    }
+
+    .proof-card{
+      overflow:hidden;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      box-shadow:var(--shadow);
+    }
+
+    .proof-media{
+      aspect-ratio:16/10;
+      overflow:hidden;
+    }
+
+    .proof-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .proof-body{
+      padding:14px;
+    }
+
+    .proof-title{
+      margin:0 0 6px;
+      font-size:18px;
+      letter-spacing:-.02em;
+    }
+
+    .proof-text{
+      margin:0;
+      color:var(--muted);
+      line-height:1.5;
+      font-size:14px;
+    }
+
+    .trust{
+      padding:8px 0 84px;
+    }
+
+    .trust-card{
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .trust-title{
+      margin:0 0 6px;
+      font-size:20px;
+      letter-spacing:-.02em;
+    }
+
+    .trust-text{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .sticky-cta{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:80;
+      padding:10px 12px calc(10px + var(--safe-bottom));
+      background:
+        linear-gradient(180deg, rgba(7,17,27,0), rgba(7,17,27,.9) 18%, rgba(7,17,27,.98));
+      backdrop-filter:blur(10px);
+      pointer-events:none;
+    }
+
+    .sticky-cta-inner{
+      width:min(100%, var(--max));
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      pointer-events:auto;
+    }
+
+    .sticky-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:56px;
+      border-radius:18px;
+      font-weight:900;
+      box-shadow:var(--shadow);
+      text-align:center;
+      padding:0 16px;
+    }
+
+    .sticky-btn.primary{
+      background:linear-gradient(180deg, var(--brand-2), var(--brand));
+      color:#102132;
+    }
+
+    .sticky-btn.secondary{
+      background:#102132;
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--text);
+    }
+
+    .empty{
+      display:none;
+      text-align:center;
+      padding:24px 18px;
+      color:var(--muted);
+      border:1px dashed rgba(255,255,255,.14);
+      border-radius:20px;
+      background:rgba(255,255,255,.03);
+    }
+
+    .empty.show{display:block}
+
+    @media (min-width:720px){
+      .hero-content{padding:34px 28px 24px}
+      .filters{grid-template-columns:1fr}
+      .filter-grid{grid-template-columns:1.1fr .9fr 1fr}
+      .cards{grid-template-columns:repeat(2, minmax(0, 1fr))}
+      .proof-grid{grid-template-columns:repeat(3, minmax(0,1fr))}
+      .trust{padding-bottom:110px}
+    }
+
+    @media (min-width:980px){
+      .hero-card{min-height:500px}
+      .cards{grid-template-columns:repeat(3, minmax(0, 1fr))}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *{scroll-behavior:auto}
+      .card-media img,.btn,.chip{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="Retour en haut">
+        <img
+          class="brand-logo"
+          src="https://digiylyfe.net/wp-content/uploads/2026/03/digiylyfe_logo_qr.jpeg"
+          alt="DIGIYLYFE"
+          loading="lazy"
+        />
+        <div class="brand-text">
+          <div class="brand-kicker">Petite Côte</div>
+          <div class="brand-title">Dormir à Saly ce soir</div>
+        </div>
+      </a>
+
+      <a class="topbar-action" href="#results">Voir les lieux</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-card">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <div class="eyebrow">🏝️ Chambres, villas, appartements</div>
+            <h1>Dormir à Saly ce soir</h1>
+            <p class="hero-sub">
+              Des lieux réels, visibles tout de suite, avec contact direct et réponse rapide.
+              Tu choisis ton coin, ton budget, ton moment.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#results">Voir les lieux maintenant</a>
+              <a class="btn btn-secondary" href="https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20cherche%20o%C3%B9%20dormir%20%C3%A0%20Saly%20ce%20soir." target="_blank" rel="noopener">WhatsApp direct</a>
+            </div>
+
+            <div class="hero-notes">
+              <span class="note">📍 Saly · Ngaparou · Somone · Mbour</span>
+              <span class="note">⚡ Contact direct</span>
+              <span class="note">🛏️ Disponible aujourd’hui</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Choisis vite. Appuie direct.</h2>
+            <p class="section-text">
+              Pas de détour. Juste ce qu’il faut pour trouver un lieu et passer à l’action.
+            </p>
+          </div>
+        </div>
+
+        <div class="filters">
+          <div class="filter-card">
+            <div class="filter-grid">
+              <label class="field">
+                <span class="label">Zone</span>
+                <select id="zoneFilter" class="control" aria-label="Choisir une zone">
+                  <option value="all">Toutes les zones</option>
+                  <option value="Saly">Saly</option>
+                  <option value="Ngaparou">Ngaparou</option>
+                  <option value="Somone">Somone</option>
+                  <option value="Mbour">Mbour</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span class="label">Budget</span>
+                <select id="budgetFilter" class="control" aria-label="Choisir un budget">
+                  <option value="all">Tous les budgets</option>
+                  <option value="low">Petit budget</option>
+                  <option value="mid">Budget moyen</option>
+                  <option value="high">Plus large</option>
+                </select>
+              </label>
+
+              <div class="field">
+                <span class="label">Quand</span>
+                <div class="chips" id="whenFilter" role="group" aria-label="Choisir un moment">
+                  <button class="chip active" type="button" data-when="all">Maintenant ou date</button>
+                  <button class="chip" type="button" data-when="now">Ce soir</button>
+                  <button class="chip" type="button" data-when="weekend">Ce week-end</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="results" class="results-bar">
+          <div><strong id="resultCount">6</strong> lieu(x) visible(s)</div>
+          <div>Contact direct · Réponse simple</div>
+        </div>
+
+        <div id="cards" class="cards">
+          <!-- CARD 1 -->
+          <article
+            class="card"
+            data-zone="Saly"
+            data-budget="mid"
+            data-when="now weekend"
+          >
+            <div class="card-media">
+              <span class="status ok"><span class="dot"></span>Disponible aujourd’hui</span>
+              <img
+                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop"
+                alt="Villa claire à Saly"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="card-body">
+              <div class="card-top">
+                <div>
+                  <h3 class="card-title">Villa Sable Clair</h3>
+                  <div class="card-zone">📍 Saly centre</div>
+                </div>
+                <div class="price">
+                  <div class="price-main">35 000 F</div>
+                  <div class="price-sub">par nuit</div>
+                </div>
+              </div>
+
+              <div class="meta">
+                <span class="meta-pill">👥 4 personnes</span>
+                <span class="meta-pill">🏊 Piscine</span>
+                <span class="meta-pill">⚡ Réponse rapide</span>
+              </div>
+
+              <p class="card-text">
+                Villa calme, lumineuse, proche de la plage et des restos. Bonne option pour dormir vite sans tourner.
+              </p>
+
+              <div class="card-actions">
+                <a
+                  class="action action-primary"
+                  href="https://wa.me/221771342889?text=Bonjour,%20je%20veux%20ce%20lieu%20:%20Villa%20Sable%20Clair%20%C3%A0%20Saly.%20Est-il%20disponible%20ce%20soir%20?"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  class="action action-secondary"
+                  href="fiche.html?slug=loc-room-sable-clair"
+                >
+                  Réserver
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 2 -->
+          <article
+            class="card"
+            data-zone="Ngaparou"
+            data-budget="low"
+            data-when="now weekend"
+          >
+            <div class="card-media">
+              <span class="status ok"><span class="dot"></span>Disponible ce soir</span>
+              <img
+                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop"
+                alt="Studio calme à Ngaparou"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="card-body">
+              <div class="card-top">
+                <div>
+                  <h3 class="card-title">Studio Palmeraie</h3>
+                  <div class="card-zone">📍 Ngaparou</div>
+                </div>
+                <div class="price">
+                  <div class="price-main">22 000 F</div>
+                  <div class="price-sub">par nuit</div>
+                </div>
+              </div>
+
+              <div class="meta">
+                <span class="meta-pill">👥 2 personnes</span>
+                <span class="meta-pill">🧭 Coin calme</span>
+                <span class="meta-pill">💬 WhatsApp direct</span>
+              </div>
+
+              <p class="card-text">
+                Petit studio propre, simple et pratique pour une nuit ou un passage rapide sur la Petite Côte.
+              </p>
+
+              <div class="card-actions">
+                <a
+                  class="action action-primary"
+                  href="https://wa.me/221771342889?text=Bonjour,%20je%20veux%20ce%20lieu%20:%20Studio%20Palmeraie%20%C3%A0%20Ngaparou.%20Disponible%20ce%20soir%20?"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  class="action action-secondary"
+                  href="fiche.html?slug=loc-room-studio-palmeraie"
+                >
+                  Réserver
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 3 -->
+          <article
+            class="card"
+            data-zone="Somone"
+            data-budget="high"
+            data-when="weekend"
+          >
+            <div class="card-media">
+              <span class="status warn"><span class="dot"></span>Week-end surtout</span>
+              <img
+                src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop"
+                alt="Maison familiale à Somone"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="card-body">
+              <div class="card-top">
+                <div>
+                  <h3 class="card-title">Maison Lagune Douce</h3>
+                  <div class="card-zone">📍 Somone</div>
+                </div>
+                <div class="price">
+                  <div class="price-main">55 000 F</div>
+                  <div class="price-sub">par nuit</div>
+                </div>
+              </div>
+
+              <div class="meta">
+                <span class="meta-pill">👥 6 personnes</span>
+                <span class="meta-pill">🌴 Famille / groupe</span>
+                <span class="meta-pill">🚗 Accès simple</span>
+              </div>
+
+              <p class="card-text">
+                Grande maison pour souffler, proche des coins utiles. Bonne option pour famille ou petit groupe.
+              </p>
+
+              <div class="card-actions">
+                <a
+                  class="action action-primary"
+                  href="https://wa.me/221771342889?text=Bonjour,%20je%20veux%20ce%20lieu%20:%20Maison%20Lagune%20Douce%20%C3%A0%20Somone.%20Vous%20pouvez%20me%20confirmer%20les%20dates%20?"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  class="action action-secondary"
+                  href="fiche.html?slug=loc-room-lagune-douce"
+                >
+                  Réserver
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 4 -->
+          <article
+            class="card"
+            data-zone="Mbour"
+            data-budget="low"
+            data-when="now"
+          >
+            <div class="card-media">
+              <span class="status ok"><span class="dot"></span>Disponible maintenant</span>
+              <img
+                src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1200&auto=format&fit=crop"
+                alt="Chambre pratique à Mbour"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="card-body">
+              <div class="card-top">
+                <div>
+                  <h3 class="card-title">Chambre Soleil Levant</h3>
+                  <div class="card-zone">📍 Mbour</div>
+                </div>
+                <div class="price">
+                  <div class="price-main">15 000 F</div>
+                  <div class="price-sub">par nuit</div>
+                </div>
+              </div>
+
+              <div class="meta">
+                <span class="meta-pill">👥 2 personnes</span>
+                <span class="meta-pill">🧼 Propre et simple</span>
+                <span class="meta-pill">📍 Accès rapide</span>
+              </div>
+
+              <p class="card-text">
+                Chambre pratique pour se poser sans attendre. Idéale pour passage, travail ou nuit courte.
+              </p>
+
+              <div class="card-actions">
+                <a
+                  class="action action-primary"
+                  href="https://wa.me/221771342889?text=Bonjour,%20je%20veux%20ce%20lieu%20:%20Chambre%20Soleil%20Levant%20%C3%A0%20Mbour.%20Est-ce%20libre%20maintenant%20?"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  class="action action-secondary"
+                  href="fiche.html?slug=loc-room-soleil-levant"
+                >
+                  Réserver
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 5 -->
+          <article
+            class="card"
+            data-zone="Saly"
+            data-budget="high"
+            data-when="now weekend"
+          >
+            <div class="card-media">
+              <span class="status ok"><span class="dot"></span>Répond rapidement</span>
+              <img
+                src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=1200&auto=format&fit=crop"
+                alt="Appartement bord de mer à Saly"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="card-body">
+              <div class="card-top">
+                <div>
+                  <h3 class="card-title">Appartement Horizon Mer</h3>
+                  <div class="card-zone">📍 Saly bord de mer</div>
+                </div>
+                <div class="price">
+                  <div class="price-main">48 000 F</div>
+                  <div class="price-sub">par nuit</div>
+                </div>
+              </div>
+
+              <div class="meta">
+                <span class="meta-pill">👥 3 personnes</span>
+                <span class="meta-pill">🌊 Vue mer</span>
+                <span class="meta-pill">📶 Confort</span>
+              </div>
+
+              <p class="card-text">
+                Appartement agréable pour se poser près de l’eau, avec ambiance calme et accès direct aux coins utiles.
+              </p>
+
+              <div class="card-actions">
+                <a
+                  class="action action-primary"
+                  href="https://wa.me/221771342889?text=Bonjour,%20je%20veux%20ce%20lieu%20:%20Appartement%20Horizon%20Mer%20%C3%A0%20Saly.%20Je%20veux%20les%20disponibilit%C3%A9s."
+                  target="_blank"
+                  rel="noopener"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  class="action action-secondary"
+                  href="fiche.html?slug=loc-room-horizon-mer"
+                >
+                  Réserver
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 6 -->
+          <article
+            class="card"
+            data-zone="Ngaparou"
+            data-budget="mid"
+            data-when="weekend"
+          >
+            <div class="card-media">
+              <span class="status warn"><span class="dot"></span>Dates à confirmer</span>
+              <img
+                src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop"
+                alt="Villa familiale à Ngaparou"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="card-body">
+              <div class="card-top">
+                <div>
+                  <h3 class="card-title">Villa Karité</h3>
+                  <div class="card-zone">📍 Ngaparou plage</div>
+                </div>
+                <div class="price">
+                  <div class="price-main">38 000 F</div>
+                  <div class="price-sub">par nuit</div>
+                </div>
+              </div>
+
+              <div class="meta">
+                <span class="meta-pill">👥 5 personnes</span>
+                <span class="meta-pill">🌴 Cour calme</span>
+                <span class="meta-pill">💬 Contact direct</span>
+              </div>
+
+              <p class="card-text">
+                Belle option pour couple, famille ou amis. Contacte directement pour avoir la réponse sur tes dates.
+              </p>
+
+              <div class="card-actions">
+                <a
+                  class="action action-primary"
+                  href="https://wa.me/221771342889?text=Bonjour,%20je%20veux%20ce%20lieu%20:%20Villa%20Karit%C3%A9%20%C3%A0%20Ngaparou.%20Pouvez-vous%20me%20confirmer%20les%20dates%20?"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  class="action action-secondary"
+                  href="fiche.html?slug=loc-room-villa-karite"
+                >
+                  Réserver
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div id="emptyState" class="empty">
+          Aucun lieu ne correspond à ce choix pour le moment. Essaie une autre zone ou élargis le budget.
+        </div>
+      </div>
+    </section>
+
+    <section class="section proof">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">La Petite Côte en vrai</h2>
+            <p class="section-text">
+              Ici, on montre des lieux, des zones et des repères concrets. Pas des promesses vides.
+            </p>
+          </div>
+        </div>
+
+        <div class="proof-grid">
+          <article class="proof-card">
+            <div class="proof-media">
+              <img
+                src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200&auto=format&fit=crop"
+                alt="Vue de côte"
+                loading="lazy"
+              />
+            </div>
+            <div class="proof-body">
+              <h3 class="proof-title">Dormir près de la mer</h3>
+              <p class="proof-text">Saly, Ngaparou, Somone. Des coins que les gens connaissent, pas des noms flottants.</p>
+            </div>
+          </article>
+
+          <article class="proof-card">
+            <div class="proof-media">
+              <img
+                src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop"
+                alt="Intérieur simple et propre"
+                loading="lazy"
+              />
+            </div>
+            <div class="proof-body">
+              <h3 class="proof-title">Choisir sans se perdre</h3>
+              <p class="proof-text">Un prix, une zone, un contact. La personne comprend vite et agit vite.</p>
+            </div>
+          </article>
+
+          <article class="proof-card">
+            <div class="proof-media">
+              <img
+                src="https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=1200&auto=format&fit=crop"
+                alt="Ambiance côtière"
+                loading="lazy"
+              />
+            </div>
+            <div class="proof-body">
+              <h3 class="proof-title">Contact direct</h3>
+              <p class="proof-text">Pas d’intermédiaire lourd. Le pont est court : voir, choisir, écrire, réserver.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section trust">
+      <div class="wrap">
+        <div class="trust-card">
+          <h2 class="trust-title">Simple, humain, direct</h2>
+          <p class="trust-text">
+            Tu vois le lieu, la zone, le prix et tu passes à l’action. Le reste se fait en direct, simplement, avec une vraie réponse.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky-cta">
+    <div class="sticky-cta-inner">
+      <a
+        class="sticky-btn secondary"
+        href="#results"
+      >
+        Voir les lieux
+      </a>
+      <a
+        class="sticky-btn primary"
+        href="https://wa.me/221771342889?text=Bonjour%20DIGIY,%20je%20cherche%20un%20lieu%20pour%20dormir%20%C3%A0%20Saly%20ou%20autour."
+        target="_blank"
+        rel="noopener"
+      >
+        WhatsApp direct
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const zoneFilter = document.getElementById('zoneFilter');
+      const budgetFilter = document.getElementById('budgetFilter');
+      const whenWrap = document.getElementById('whenFilter');
+      const cardsWrap = document.getElementById('cards');
+      const cards = Array.from(cardsWrap.querySelectorAll('.card'));
+      const resultCount = document.getElementById('resultCount');
+      const emptyState = document.getElementById('emptyState');
+
+      let currentWhen = 'all';
+
+      function matches(card){
+        const zone = card.dataset.zone || '';
+        const budget = card.dataset.budget || '';
+        const when = (card.dataset.when || '').split(/\s+/).filter(Boolean);
+
+        const zoneOk = zoneFilter.value === 'all' || zone === zoneFilter.value;
+        const budgetOk = budgetFilter.value === 'all' || budget === budgetFilter.value;
+        const whenOk = currentWhen === 'all' || when.includes(currentWhen);
+
+        return zoneOk && budgetOk && whenOk;
+      }
+
+      function render(){
+        let visible = 0;
+
+        cards.forEach(card => {
+          const ok = matches(card);
+          card.style.display = ok ? '' : 'none';
+          if(ok) visible += 1;
+        });
+
+        resultCount.textContent = String(visible);
+        emptyState.classList.toggle('show', visible === 0);
+      }
+
+      zoneFilter.addEventListener('change', render);
+      budgetFilter.addEventListener('change', render);
+
+      whenWrap.addEventListener('click', (e) => {
+        const btn = e.target.closest('.chip');
+        if(!btn) return;
+
+        currentWhen = btn.dataset.when || 'all';
+        whenWrap.querySelectorAll('.chip').forEach(chip => chip.classList.remove('active'));
+        btn.classList.add('active');
+        render();
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
