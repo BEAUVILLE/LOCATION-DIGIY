@@ -385,14 +385,35 @@ DIGIYLYFE point com.
 
 let ecouteActive = false;
 let utterance = null;
+let voixPrete = false;
+let voixChoisie = null;
 
 const playBtn = document.getElementById("playBtn");
 
-function choisirVoix() {
-  if (!("speechSynthesis" in window)) return null;
+function attendreVoixDisponibles(callback) {
+  if (!("speechSynthesis" in window)) {
+    callback([]);
+    return;
+  }
 
-  const voices = window.speechSynthesis.getVoices();
+  let essais = 0;
 
+  function check() {
+    const voices = window.speechSynthesis.getVoices();
+
+    if (voices.length > 0 || essais >= 25) {
+      callback(voices);
+      return;
+    }
+
+    essais += 1;
+    setTimeout(check, 200);
+  }
+
+  check();
+}
+
+function choisirVoixDepuisListe(voices) {
   return (
     voices.find(v => v.lang === "fr-FR" && /thomas|nicolas|paul|pierre|male|homme/i.test(v.name)) ||
     voices.find(v => v.lang === "fr-FR") ||
@@ -402,56 +423,75 @@ function choisirVoix() {
   );
 }
 
+function preparerVoix(callback) {
+  attendreVoixDisponibles((voices) => {
+    voixChoisie = choisirVoixDepuisListe(voices);
+    voixPrete = !!voixChoisie;
+    callback(voixChoisie);
+  });
+}
+
+function majBouton(txt, playing, done) {
+  playBtn.textContent = txt;
+  playBtn.classList.toggle("playing", !!playing);
+  playBtn.classList.toggle("done", !!done);
+}
+
 function lancerEcoute() {
   if (!("speechSynthesis" in window)) {
-    playBtn.textContent = "Son indispo";
+    majBouton("Son indispo", false, false);
     return;
   }
 
   if (ecouteActive) {
     window.speechSynthesis.cancel();
     ecouteActive = false;
-    playBtn.textContent = "▶ Écouter";
-    playBtn.classList.remove("playing", "done");
+    majBouton("▶ Écouter", false, false);
     return;
   }
 
-  window.speechSynthesis.cancel();
+  majBouton("Prépare…", false, false);
 
-  utterance = new SpeechSynthesisUtterance(texteAudio.trim());
-  utterance.lang = "fr-FR";
-  utterance.rate = 0.82;
-  utterance.pitch = 0.9;
-  utterance.volume = 1;
+  preparerVoix((voix) => {
+    if (!voix) {
+      majBouton("Aucune voix", false, false);
+      alert("Aucune voix de synthèse vocale n'est disponible sur ce navigateur.");
+      return;
+    }
 
-  const voix = choisirVoix();
-  if (voix) utterance.voice = voix;
+    window.speechSynthesis.cancel();
 
-  utterance.onstart = function () {
-    ecouteActive = true;
-    playBtn.textContent = "🔊 Écoute…";
-    playBtn.classList.add("playing");
-    playBtn.classList.remove("done");
-  };
+    utterance = new SpeechSynthesisUtterance(texteAudio.trim());
+    utterance.lang = voix.lang || "fr-FR";
+    utterance.voice = voix;
+    utterance.rate = 0.82;
+    utterance.pitch = 0.9;
+    utterance.volume = 1;
 
-  utterance.onend = function () {
-    ecouteActive = false;
-    playBtn.textContent = "↺ Réécouter";
-    playBtn.classList.remove("playing");
-    playBtn.classList.add("done");
-  };
+    utterance.onstart = function () {
+      ecouteActive = true;
+      majBouton("🔊 Écoute…", true, false);
+    };
 
-  utterance.onerror = function () {
-    ecouteActive = false;
-    playBtn.textContent = "Réessaie";
-    playBtn.classList.remove("playing");
-  };
+    utterance.onend = function () {
+      ecouteActive = false;
+      majBouton("↺ Réécouter", false, true);
+    };
 
-  window.speechSynthesis.speak(utterance);
+    utterance.onerror = function (event) {
+      console.warn("[DIGIY AUDIO] erreur speechSynthesis:", event);
+      ecouteActive = false;
+      majBouton("Réessaie", false, false);
+    };
 
-  setTimeout(function () {
-    window.speechSynthesis.resume();
-  }, 50);
+    window.speechSynthesis.speak(utterance);
+
+    setTimeout(() => {
+      try {
+        window.speechSynthesis.resume();
+      } catch (e) {}
+    }, 120);
+  });
 }
 
 function relancerReel() {
@@ -471,7 +511,16 @@ window.addEventListener("beforeunload", function () {
 });
 
 if ("speechSynthesis" in window) {
-  window.speechSynthesis.onvoiceschanged = choisirVoix;
+  attendreVoixDisponibles((voices) => {
+    voixChoisie = choisirVoixDepuisListe(voices);
+    voixPrete = !!voixChoisie;
+  });
+
+  window.speechSynthesis.onvoiceschanged = function () {
+    const voices = window.speechSynthesis.getVoices();
+    voixChoisie = choisirVoixDepuisListe(voices);
+    voixPrete = !!voixChoisie;
+  };
 }
 </script>
 
