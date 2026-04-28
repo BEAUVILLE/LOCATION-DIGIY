@@ -33,6 +33,8 @@
     inset: 0;
   }
 
+  /* ===== SCÈNE 1 — TEXTE ===== */
+
   .scene-text {
     display: flex;
     flex-direction: column;
@@ -46,7 +48,11 @@
   }
 
   @keyframes sceneOut {
-    to { opacity: 0; transform: scale(1.025); pointer-events: none; }
+    to {
+      opacity: 0;
+      transform: scale(1.025);
+      pointer-events: none;
+    }
   }
 
   .line {
@@ -57,7 +63,10 @@
   }
 
   @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .l1  { animation-delay: 0.35s; }
@@ -97,7 +106,10 @@
     font-style: italic;
   }
 
-  .parole em { color: #f5d98a; font-style: normal; }
+  .parole em {
+    color: #f5d98a;
+    font-style: normal;
+  }
 
   .pivot {
     font-size: 17px;
@@ -123,7 +135,10 @@
     color: #d4e8c0;
   }
 
-  .sub-zero strong { color: #f5d98a; font-size: 17px; }
+  .sub-zero strong {
+    color: #f5d98a;
+    font-size: 17px;
+  }
 
   .modules-grid {
     display: grid;
@@ -146,7 +161,9 @@
     font-weight: bold;
   }
 
-  .mod-icon { font-size: 14px; }
+  .mod-icon {
+    font-size: 14px;
+  }
 
   .vision-line {
     font-family: "Courier New", monospace;
@@ -174,21 +191,34 @@
     text-shadow: 0 0 14px rgba(245,217,138,0.6);
   }
 
+  /* ===== SCÈNE 2 — IMAGE FINALE PAR URL ===== */
+
   .scene-final {
     opacity: 0;
     animation: sceneIn 1.1s ease forwards 19.2s;
   }
 
   @keyframes sceneIn {
-    from { opacity: 0; transform: scale(1.05); }
-    to   { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   .bg-image {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(180deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.18) 100%),
+      linear-gradient(
+        180deg,
+        rgba(0,0,0,0.04) 0%,
+        rgba(0,0,0,0.08) 45%,
+        rgba(0,0,0,0.16) 100%
+      ),
       url("https://digiylyfe.net/wp-content/uploads/2026/04/DIGIYLYFE_A4_v3-scaled.png");
     background-size: cover;
     background-position: center center;
@@ -199,7 +229,7 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(to top, rgba(0,0,0,0.26), transparent 42%),
+      linear-gradient(to top, rgba(0,0,0,0.18), transparent 42%),
       radial-gradient(circle at 50% 78%, rgba(245,217,138,0.10), transparent 32%);
     pointer-events: none;
   }
@@ -209,6 +239,8 @@
     inset: 0;
     z-index: 2;
   }
+
+  /* ===== BOUTONS BAS TERRAIN ===== */
 
   .play-btn,
   .replay {
@@ -260,8 +292,28 @@
     color: #d4e8c0;
   }
 
+  .progress-wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    z-index: 999;
+    background: rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+
+  .progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #00a651, #f5d98a);
+    transition: width 0.22s ease;
+  }
+
   @media (max-width: 430px) {
-    body { align-items: stretch; }
+    body {
+      align-items: stretch;
+    }
 
     .reel {
       width: 100vw;
@@ -269,7 +321,9 @@
       border-radius: 0;
     }
 
-    .scene-text { padding: 32px 26px 92px; }
+    .scene-text {
+      padding: 32px 26px 92px;
+    }
 
     .play-btn {
       left: max(14px, env(safe-area-inset-left));
@@ -288,6 +342,7 @@
 
 <div class="reel">
 
+  <!-- SCÈNE 1 -->
   <div class="scene-text">
 
     <div class="line l1 tag">Saly · Petite Côte · Sénégal</div>
@@ -335,193 +390,165 @@
       <div class="mod-item"><span class="mod-icon">💼</span> Travail</div>
     </div>
 
-    <div class="line l8 pivot">Voir. Écouter. Comprendre. Agir.</div>
+    <div class="line l8 pivot">
+      Voir. Écouter. Comprendre. Agir.
+    </div>
 
     <div class="line l9 vision-line">
       <span class="infinity">∞</span>
       L’Afrique enracinée, connectée au monde.
     </div>
 
-    <div class="line l10 lieu">👉 digiylyfe.com</div>
+    <div class="line l10 lieu">
+      👉 digiylyfe.com
+    </div>
 
   </div>
 
+  <!-- SCÈNE 2 -->
   <div class="scene-final">
     <a class="final-link" href="https://digiylyfe.com" target="_blank" rel="noopener" aria-label="Aller sur DIGIYLYFE"></a>
     <div class="bg-image"></div>
     <div class="final-shade"></div>
   </div>
 
-  <button class="play-btn" id="playBtn" type="button">▶ Écouter</button>
+  <!-- BOUTONS -->
+  <button class="play-btn" id="playBtn" type="button" onclick="digiyToggleAudio()">▶ Écouter</button>
   <button class="replay" type="button" onclick="relancerReel()">↺ Revoir</button>
+
+  <div class="progress-wrap">
+    <div class="progress" id="digiyProgress"></div>
+  </div>
 
 </div>
 
 <script>
-const texteAudio = `
-Saly. Petite Côte. Sénégal.
+(function(){
+  var audioRunning = false;
+  var timer = null;
 
-Un chauffeur, un loueur, un commerçant.
+  var AUDIO_TEXT =
+    "Saly. Petite Côte. Sénégal. " +
+    "Un chauffeur, un loueur, un commerçant. " +
+    "Tous veulent la même chose : être visibles, travailler mieux, et garder leur argent. " +
+    "Alors DIGIYLYFE ne construit pas une simple plateforme. " +
+    "DIGIYLYFE construit une présence digitale pour le terrain. " +
+    "Zéro pour cent commission. Le client paie directement. Le pro garde la main. L'activité reste à lui. " +
+    "Je conduis. Je loue. Je vends. Mon argent. Mes services. Travail. " +
+    "Voir. Écouter. Comprendre. Agir. " +
+    "L'Afrique enracinée, connectée au monde. " +
+    "DIGIYLYFE point com.";
 
-Tous veulent la même chose : être visibles, travailler mieux, et garder leur argent.
-
-Alors DIGIYLYFE ne construit pas une simple plateforme.
-
-DIGIYLYFE construit une présence digitale pour le terrain.
-
-Zéro pour cent commission.
-Le client paie directement.
-Le pro garde la main.
-L'activité reste à lui.
-
-Je conduis. Je loue. Je vends. Mon argent. Mes services. Travail.
-
-Voir. Écouter. Comprendre. Agir.
-
-L'Afrique enracinée, connectée au monde.
-
-DIGIYLYFE point com.
-`;
-
-let ecouteActive = false;
-let utterance = null;
-let voixPrete = false;
-let voixChoisie = null;
-
-const playBtn = document.getElementById("playBtn");
-
-function attendreVoixDisponibles(callback) {
-  if (!("speechSynthesis" in window)) {
-    callback([]);
-    return;
+  function setProgress(p) {
+    var bar = document.getElementById("digiyProgress");
+    if (!bar) return;
+    bar.style.width = Math.max(0, Math.min(100, p || 0)) + "%";
   }
 
-  let essais = 0;
+  function setUI(on, done) {
+    var btn = document.getElementById("playBtn");
+    audioRunning = !!on;
 
-  function check() {
-    const voices = window.speechSynthesis.getVoices();
+    if (!btn) return;
 
-    if (voices.length > 0 || essais >= 25) {
-      callback(voices);
-      return;
+    btn.classList.toggle("playing", !!on);
+    btn.classList.toggle("done", !!done);
+
+    if (on) {
+      btn.textContent = "🔊 Écoute…";
+    } else if (done) {
+      btn.textContent = "↺ Réécouter";
+    } else {
+      btn.textContent = "▶ Écouter";
     }
-
-    essais += 1;
-    setTimeout(check, 200);
   }
 
-  check();
-}
+  window.digiyStopAudio = function() {
+    try {
+      speechSynthesis.cancel();
+    } catch(e) {}
 
-function choisirVoixDepuisListe(voices) {
-  return (
-    voices.find(v => v.lang === "fr-FR" && /thomas|nicolas|paul|pierre|male|homme/i.test(v.name)) ||
-    voices.find(v => v.lang === "fr-FR") ||
-    voices.find(v => v.lang && v.lang.toLowerCase().startsWith("fr")) ||
-    voices[0] ||
-    null
-  );
-}
-
-function preparerVoix(callback) {
-  attendreVoixDisponibles((voices) => {
-    voixChoisie = choisirVoixDepuisListe(voices);
-    voixPrete = !!voixChoisie;
-    callback(voixChoisie);
-  });
-}
-
-function majBouton(txt, playing, done) {
-  playBtn.textContent = txt;
-  playBtn.classList.toggle("playing", !!playing);
-  playBtn.classList.toggle("done", !!done);
-}
-
-function lancerEcoute() {
-  if (!("speechSynthesis" in window)) {
-    majBouton("Son indispo", false, false);
-    return;
-  }
-
-  if (ecouteActive) {
-    window.speechSynthesis.cancel();
-    ecouteActive = false;
-    majBouton("▶ Écouter", false, false);
-    return;
-  }
-
-  majBouton("Prépare…", false, false);
-
-  preparerVoix((voix) => {
-    if (!voix) {
-      majBouton("Aucune voix", false, false);
-      alert("Aucune voix de synthèse vocale n'est disponible sur ce navigateur.");
-      return;
-    }
-
-    window.speechSynthesis.cancel();
-
-    utterance = new SpeechSynthesisUtterance(texteAudio.trim());
-    utterance.lang = voix.lang || "fr-FR";
-    utterance.voice = voix;
-    utterance.rate = 0.82;
-    utterance.pitch = 0.9;
-    utterance.volume = 1;
-
-    utterance.onstart = function () {
-      ecouteActive = true;
-      majBouton("🔊 Écoute…", true, false);
-    };
-
-    utterance.onend = function () {
-      ecouteActive = false;
-      majBouton("↺ Réécouter", false, true);
-    };
-
-    utterance.onerror = function (event) {
-      console.warn("[DIGIY AUDIO] erreur speechSynthesis:", event);
-      ecouteActive = false;
-      majBouton("Réessaie", false, false);
-    };
-
-    window.speechSynthesis.speak(utterance);
-
-    setTimeout(() => {
-      try {
-        window.speechSynthesis.resume();
-      } catch (e) {}
-    }, 120);
-  });
-}
-
-function relancerReel() {
-  try {
-    window.speechSynthesis.cancel();
-  } catch (e) {}
-
-  location.reload();
-}
-
-playBtn.addEventListener("click", lancerEcoute);
-
-window.addEventListener("beforeunload", function () {
-  try {
-    window.speechSynthesis.cancel();
-  } catch (e) {}
-});
-
-if ("speechSynthesis" in window) {
-  attendreVoixDisponibles((voices) => {
-    voixChoisie = choisirVoixDepuisListe(voices);
-    voixPrete = !!voixChoisie;
-  });
-
-  window.speechSynthesis.onvoiceschanged = function () {
-    const voices = window.speechSynthesis.getVoices();
-    voixChoisie = choisirVoixDepuisListe(voices);
-    voixPrete = !!voixChoisie;
+    clearInterval(timer);
+    timer = null;
+    setProgress(0);
+    setUI(false, false);
   };
-}
+
+  window.digiyStartAudio = function() {
+    if (!("speechSynthesis" in window)) {
+      alert("Ton navigateur ne permet pas la lecture audio ici.");
+      return;
+    }
+
+    window.digiyStopAudio();
+
+    var msg = new SpeechSynthesisUtterance(AUDIO_TEXT);
+    msg.lang = "fr-FR";
+    msg.rate = 0.88;
+    msg.pitch = 1;
+    msg.volume = 1;
+
+    var start = Date.now();
+    var estimate = Math.max(18000, AUDIO_TEXT.length * 58);
+
+    timer = setInterval(function(){
+      setProgress(((Date.now() - start) / estimate) * 100);
+    }, 350);
+
+    msg.onstart = function() {
+      setUI(true, false);
+      setProgress(2);
+    };
+
+    msg.onend = function() {
+      clearInterval(timer);
+      timer = null;
+      setProgress(100);
+      setUI(false, true);
+
+      setTimeout(function(){
+        setProgress(0);
+      }, 900);
+    };
+
+    msg.onerror = function() {
+      clearInterval(timer);
+      timer = null;
+      setProgress(0);
+      setUI(false, false);
+      var btn = document.getElementById("playBtn");
+      if (btn) btn.textContent = "Réessaie";
+    };
+
+    speechSynthesis.speak(msg);
+
+    setTimeout(function(){
+      try { speechSynthesis.resume(); } catch(e) {}
+    }, 80);
+  };
+
+  window.digiyToggleAudio = function() {
+    if (audioRunning) {
+      window.digiyStopAudio();
+    } else {
+      window.digiyStartAudio();
+    }
+  };
+
+  window.relancerReel = function() {
+    try {
+      speechSynthesis.cancel();
+    } catch(e) {}
+
+    location.reload();
+  };
+
+  window.addEventListener("beforeunload", function(){
+    try {
+      speechSynthesis.cancel();
+    } catch(e) {}
+  });
+})();
 </script>
 
 </body>
