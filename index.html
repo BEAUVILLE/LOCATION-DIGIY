@@ -43,7 +43,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 32px 30px;
+    padding: 32px 30px 82px;
     background:
       radial-gradient(circle at 22% 15%, rgba(245,217,138,0.12), transparent 28%),
       radial-gradient(circle at 80% 82%, rgba(65,140,65,0.18), transparent 32%),
@@ -244,12 +244,62 @@
     z-index: 2;
   }
 
-  /* ===== BOUTONS AUDIO / REVOIR — VERSION TERRAIN ===== */
+  /* ===== LECTEUR AUDIO DIGIY — BAS TERRAIN ===== */
 
-  .play-btn,
+  .audio-player {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border: 1px solid rgba(245,217,138,0.72);
+    border-radius: 999px;
+    background: rgba(0,0,0,0.64);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.46);
+  }
+
+  .audio-btn {
+    border: none;
+    background: linear-gradient(135deg, #c9a84c, #f5d98a);
+    color: #020802;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: "Courier New", monospace;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 9px 13px;
+    font-size: 12px;
+    min-width: 104px;
+  }
+
+  .audio-status {
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    color: #f5d98a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0.88;
+  }
+
+  .audio-player.is-playing {
+    border-color: rgba(106,170,106,0.75);
+  }
+
+  .audio-player.is-playing .audio-status {
+    color: #d4e8c0;
+  }
+
   .replay {
     position: absolute;
-    z-index: 50;
+    right: 14px;
+    bottom: 14px;
+    z-index: 80;
     border: 1px solid rgba(245,217,138,0.72);
     color: #f5d98a;
     background: rgba(0,0,0,0.58);
@@ -261,39 +311,15 @@
     transition: 0.25s ease;
     backdrop-filter: blur(8px);
     box-shadow: 0 10px 28px rgba(0,0,0,0.42);
-  }
-
-  .play-btn {
-    left: 16px;
-    bottom: 16px;
-    padding: 10px 16px;
-    font-size: 12px;
-  }
-
-  .replay {
-    right: 16px;
-    bottom: 16px;
     padding: 10px 15px;
     font-size: 11px;
     opacity: 0;
     animation: fadeUp 0.5s ease forwards 20.4s;
   }
 
-  .play-btn:hover,
   .replay:hover {
     background: rgba(197,160,50,0.30);
     color: #ffffff;
-  }
-
-  .play-btn.playing {
-    background: rgba(197,160,50,0.36);
-    color: #ffffff;
-  }
-
-  .play-btn.done {
-    background: rgba(65,140,65,0.34);
-    border-color: rgba(106,170,106,0.75);
-    color: #d4e8c0;
   }
 
   @media (max-width: 430px) {
@@ -308,17 +334,26 @@
     }
 
     .scene-text {
-      padding: 32px 26px 78px;
+      padding: 32px 26px 94px;
     }
 
-    .play-btn {
-      left: max(14px, env(safe-area-inset-left));
-      bottom: max(14px, env(safe-area-inset-bottom));
+    .audio-player {
+      left: max(12px, env(safe-area-inset-left));
+      bottom: max(12px, env(safe-area-inset-bottom));
+      max-width: calc(100vw - 142px);
+    }
+
+    .audio-status {
+      display: none;
+    }
+
+    .audio-btn {
+      min-width: 110px;
     }
 
     .replay {
-      right: max(14px, env(safe-area-inset-right));
-      bottom: max(14px, env(safe-area-inset-bottom));
+      right: max(12px, env(safe-area-inset-right));
+      bottom: max(12px, env(safe-area-inset-bottom));
     }
   }
 </style>
@@ -398,132 +433,132 @@
     <div class="final-shade"></div>
   </div>
 
-  <!-- BOUTONS -->
-  <button class="play-btn" id="playBtn" type="button" onclick="lancerEcoute()">▶ Écouter</button>
+  <!-- LECTEUR AUDIO -->
+  <div class="audio-player" id="audioPlayer">
+    <button class="audio-btn" id="audioBtn" type="button">▶ Écouter</button>
+    <div class="audio-status" id="audioStatus">Prêt</div>
+  </div>
+
   <button class="replay" type="button" onclick="relancerReel()">↺ Revoir</button>
 
 </div>
 
 <script>
-const scriptAudio = [
-  { delay: 350, texte: "Saly. Petite Côte. Sénégal." },
-  { delay: 1750, texte: "Un chauffeur, un loueur, un commerçant." },
-  { delay: 3350, texte: "Tous veulent la même chose. Être visibles, travailler mieux, et garder leur argent." },
-  { delay: 5000, texte: "Alors DIGIYLYFE ne construit pas une simple plateforme." },
-  { delay: 6600, texte: "DIGIYLYFE construit une présence digitale pour le terrain." },
-  { delay: 8200, texte: "Zéro pour cent commission. Le client paie directement. Le pro garde la main. L'activité reste à lui." },
-  { delay: 10000, texte: "Je conduis. Je loue. Je vends. Mon argent. Mes services. Travail." },
-  { delay: 12000, texte: "Voir. Écouter. Comprendre. Agir." },
-  { delay: 14000, texte: "L'Afrique enracinée, connectée au monde." },
-  { delay: 16200, texte: "DIGIYLYFE point com." }
+const phrasesAudio = [
+  "Saly. Petite Côte. Sénégal.",
+  "Un chauffeur, un loueur, un commerçant.",
+  "Tous veulent la même chose. Être visibles, travailler mieux, et garder leur argent.",
+  "Alors DIGIYLYFE ne construit pas une simple plateforme.",
+  "DIGIYLYFE construit une présence digitale pour le terrain.",
+  "Zéro pour cent commission. Le client paie directement. Le pro garde la main. L'activité reste à lui.",
+  "Je conduis. Je loue. Je vends. Mon argent. Mes services. Travail.",
+  "Voir. Écouter. Comprendre. Agir.",
+  "L'Afrique enracinée, connectée au monde.",
+  "DIGIYLYFE point com."
 ];
 
-let ecouteActive = false;
-let timers = [];
+let indexPhrase = 0;
+let enEcoute = false;
+let enPause = false;
+let voixChoisie = null;
+let utteranceCourante = null;
 
-function clearTimers() {
-  timers.forEach(timer => clearTimeout(timer));
-  timers = [];
+const audioBtn = document.getElementById("audioBtn");
+const audioStatus = document.getElementById("audioStatus");
+const audioPlayer = document.getElementById("audioPlayer");
+
+function mettreEtat(label, status, playing) {
+  audioBtn.textContent = label;
+  audioStatus.textContent = status;
+  audioPlayer.classList.toggle("is-playing", !!playing);
 }
 
-function getVoixFR() {
+function choisirVoix() {
+  if (!("speechSynthesis" in window)) return null;
+
   const voices = window.speechSynthesis.getVoices();
 
-  return (
-    voices.find(v => v.lang === "fr-FR" && /thomas|pierre|nicolas|paul|male/i.test(v.name)) ||
+  voixChoisie =
+    voices.find(v => v.lang === "fr-FR" && /thomas|nicolas|paul|pierre|male|homme/i.test(v.name)) ||
     voices.find(v => v.lang === "fr-FR") ||
-    voices.find(v => v.lang && v.lang.startsWith("fr")) ||
+    voices.find(v => v.lang && v.lang.toLowerCase().startsWith("fr")) ||
     voices[0] ||
-    null
-  );
+    null;
+
+  return voixChoisie;
 }
 
-function parler(texte) {
-  try {
-    const utterance = new SpeechSynthesisUtterance(texte);
-    const voix = getVoixFR();
+function parlerPhrase() {
+  if (!enEcoute) return;
 
-    if (voix) {
-      utterance.voice = voix;
-    }
-
-    utterance.lang = "fr-FR";
-    utterance.rate = 0.82;
-    utterance.pitch = 0.88;
-    utterance.volume = 1;
-
-    window.speechSynthesis.resume();
-    window.speechSynthesis.speak(utterance);
-  } catch (error) {
-    console.warn("[DIGIY AUDIO] Erreur écoute :", error);
+  if (indexPhrase >= phrasesAudio.length) {
+    enEcoute = false;
+    enPause = false;
+    indexPhrase = 0;
+    mettreEtat("↺ Réécouter", "Terminé", false);
+    return;
   }
+
+  const texte = phrasesAudio[indexPhrase];
+
+  utteranceCourante = new SpeechSynthesisUtterance(texte);
+  utteranceCourante.lang = "fr-FR";
+  utteranceCourante.rate = 0.82;
+  utteranceCourante.pitch = 0.9;
+  utteranceCourante.volume = 1;
+
+  if (!voixChoisie) choisirVoix();
+  if (voixChoisie) utteranceCourante.voice = voixChoisie;
+
+  utteranceCourante.onstart = () => {
+    mettreEtat("⏸ Pause", "Écoute…", true);
+  };
+
+  utteranceCourante.onend = () => {
+    indexPhrase += 1;
+    parlerPhrase();
+  };
+
+  utteranceCourante.onerror = (event) => {
+    console.warn("[DIGIY AUDIO] Erreur :", event);
+    enEcoute = false;
+    enPause = false;
+    mettreEtat("▶ Écouter", "Son bloqué", false);
+  };
+
+  window.speechSynthesis.speak(utteranceCourante);
 }
 
-function reveillerAudio() {
-  try {
-    window.speechSynthesis.cancel();
-
-    const test = new SpeechSynthesisUtterance(" ");
-    test.lang = "fr-FR";
-    test.volume = 0;
-    test.rate = 1;
-
-    window.speechSynthesis.speak(test);
-    window.speechSynthesis.resume();
-  } catch (error) {
-    console.warn("[DIGIY AUDIO] Réveil impossible :", error);
-  }
-}
-
-function lancerEcoute() {
-  const btn = document.getElementById("playBtn");
-
+function lancerOuPauseAudio() {
   if (!("speechSynthesis" in window)) {
-    btn.textContent = "Son indisponible";
+    mettreEtat("Son indispo", "Navigateur", false);
     return;
   }
 
-  if (ecouteActive) {
-    window.speechSynthesis.cancel();
-    clearTimers();
-    ecouteActive = false;
-    btn.textContent = "▶ Écouter";
-    btn.classList.remove("playing", "done");
+  choisirVoix();
+
+  if (enEcoute && !enPause) {
+    window.speechSynthesis.pause();
+    enPause = true;
+    mettreEtat("▶ Reprendre", "Pause", false);
     return;
   }
 
-  ecouteActive = true;
+  if (enEcoute && enPause) {
+    window.speechSynthesis.resume();
+    enPause = false;
+    mettreEtat("⏸ Pause", "Écoute…", true);
+    return;
+  }
 
-  btn.textContent = "🔊 Écoute…";
-  btn.classList.add("playing");
-  btn.classList.remove("done");
+  window.speechSynthesis.cancel();
 
-  reveillerAudio();
-  clearTimers();
+  indexPhrase = 0;
+  enEcoute = true;
+  enPause = false;
 
-  const startTimer = setTimeout(() => {
-    window.speechSynthesis.cancel();
-
-    scriptAudio.forEach(item => {
-      const timer = setTimeout(() => {
-        window.speechSynthesis.resume();
-        parler(item.texte);
-      }, item.delay);
-
-      timers.push(timer);
-    });
-
-    const endTimer = setTimeout(() => {
-      btn.textContent = "↺ Réécouter";
-      btn.classList.remove("playing");
-      btn.classList.add("done");
-      ecouteActive = false;
-    }, 18800);
-
-    timers.push(endTimer);
-  }, 180);
-
-  timers.push(startTimer);
+  mettreEtat("⏸ Pause", "Écoute…", true);
+  parlerPhrase();
 }
 
 function relancerReel() {
@@ -531,9 +566,10 @@ function relancerReel() {
     window.speechSynthesis.cancel();
   } catch (error) {}
 
-  clearTimers();
   location.reload();
 }
+
+audioBtn.addEventListener("click", lancerOuPauseAudio);
 
 window.addEventListener("beforeunload", () => {
   try {
@@ -542,8 +578,10 @@ window.addEventListener("beforeunload", () => {
 });
 
 if ("speechSynthesis" in window) {
+  choisirVoix();
+
   window.speechSynthesis.onvoiceschanged = () => {
-    getVoixFR();
+    choisirVoix();
   };
 }
 </script>
